@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+		<meta charset="UTF-8" />
+		<title>Conway's Game of Life</title>
+
+		<link href="css/style.css" rel="stylesheet" />
+	</head>
+
+
+	<body>
+
+	<!-- Buttons & Controls -->
+		<div class="controls">
+		  <button id="playButton">Play</button>
+		  <button id="pauseButton">Pause</button>
+		  <button id="nextButton">Step</button>
+
+		  <button id="speedUpButton">Speed Up</button>
+		  <button id="slowDownButton">Slow Down</button>
+
+		  <button id="fetchDetailsButton">Fetch Details</button>
+		</div>
+
+		<div class="details">
+		  Iterations: <span id="iterations"></span> &nbsp; Cells Created: <span id="cellsCreated"></span> &nbsp; Cells Destroyed: <span id="cellsDestroyed"></span> &nbsp;
+		</div>
+
+
+		<!-- Game content -->
+		<div>
+		  <div class="conway-game"></div>
+		</div>
+
+
+		<!-- Load jQuery -->
+		<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+
+		<script type="text/javascript" src="js/conways-game.js"></script>
+
+	</body>
+
+</html>
