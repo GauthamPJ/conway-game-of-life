@@ -47,8 +47,7 @@ function Cell(row, col) {
     return $this;
   };
 
-  // If $this is not yet defined, create a new HTML element.
-  // This represents the HTML form of the cell.
+  // If $this is not yet defined, create a new HTML element to represent the cell.
   if (null === $this) {
     $this = $('<div>').addClass('conway-cell').data('cell', _this);
   }
@@ -58,24 +57,23 @@ function Cell(row, col) {
 
 /**
  * The main logic of the game goes here.
- * This is where the logic of the game and all the Cells and their
- * behavour is monitored.
+ * This is where the game and the Cells behavour is monitored.
  */
 function ConwayGame(selector, numRows, numCols) {
 
   var $parent = $(selector), // The parent element for the game
     _this = this,
-    rows = numRows, // The number of Rows for the board.
-    cols = numCols, // The number of Columns for the board.
-    cells = [], // The 2D map of 
+    rows = numRows, // Number of Rows for the board.
+    cols = numCols, // Number of Columns for the board.
+    cells = [], // 2D map of the cells.
     lifeMap = [],
-    intervalTime = 500,
-    intervalId,
-    running = false,
-    iterations = 0,
+    intervalTime = 500, // Default speed of the game.
+    intervalId, // To keep track of the interval variable.
+    running = false, // Is the application playing or is it paused?
+    iterations = 0, // Number of steps that have taken place in the game.
     $iterationsElement = null,
-    cellsCreated = 0,
-    cellsDestroyed = 0;
+    cellsCreated = 0, // Number of cells that have been created.
+    cellsDestroyed = 0; // Number of cells that have been destroyed.
 
   this.getSpeed = function() {
     return intervalTime;
@@ -251,37 +249,3 @@ function ConwayGame(selector, numRows, numCols) {
 
   return this;
 }
-
-
-// Run as soon as the Document is Ready.
-$(function() {
-
-  var game = new ConwayGame('.conway-game', 50, 50);
-  game.setIterationSelector('#iterations');
-
-  $('#nextButton').on('click', function() {
-    game.next();
-  });
-
-  $('#playButton').on('click', function() {
-    game.play();
-  });
-
-  $('#pauseButton').on('click', function() {
-    game.pause();
-  });
-
-  $('#speedUpButton').on('click', function() {
-    game.increaseSpeed();
-  });
-
-  $('#slowDownButton').on('click', function() {
-    game.decreaseSpeed();
-  });
-
-  $('#fetchDetailsButton').on('click', function() {
-    $('#cellsCreated').text(game.getCellsCreated());
-    $('#cellsDestroyed').text(game.getCellsDestroyed());
-  });
-
-});
